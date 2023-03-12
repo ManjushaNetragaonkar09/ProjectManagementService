@@ -8,4 +8,6 @@ import com.datapoem.pms.payload.request.AddTaskRequest;
 public interface AddNewTaskService {
 
 	public UserWithTaskDto addNewTaskToUser(AddTaskRequest req) throws ParseException ;
+	public UserWithTaskDto updateNewTaskToUser(AddTaskRequest req) throws ParseException ;
+
 }

@@ -15,4 +15,5 @@ public class AddTaskRequest implements Serializable {
 	private String status;
 	private String userId;
 	private String description;
+	private String taskId;
 }

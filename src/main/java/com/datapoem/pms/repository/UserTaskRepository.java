@@ -11,5 +11,5 @@ import com.datapoem.pms.models.UserWithTaskDto;
 public interface UserTaskRepository extends JpaRepository<UserWithTaskDto, Integer>{
 
 	List<UserWithTaskDto> findByUserId(int userId);
-	
+ 
 }

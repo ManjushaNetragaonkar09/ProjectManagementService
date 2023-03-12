@@ -102,5 +102,25 @@ public class UserTaskController {
 	}
 
 	// update task //task details,userId
-
+	@PostMapping("/{userId}/{taskId}")
+	public ResponseEntity<AddTaskResponse> addTask(@PathVariable(name = "userId") String userId,
+			@RequestBody AddTaskRequest req,@PathVariable(name="taskId") String taskId) {
+		log.info("Entering into UserTaskController.addTask()");
+		AddTaskResponse resp = new AddTaskResponse();
+		UserWithTaskDto taskAdded = new UserWithTaskDto();
+		try {
+			if (null != req) {
+				taskAdded = addNewTaskService.updateNewTaskToUser(req);
+				resp.setMessage("SUCCESS");
+				resp.setData(taskAdded);
+				return new ResponseEntity<AddTaskResponse>(resp, HttpStatus.OK);
+			}
+		} catch (Exception e) {
+			log.error("Error occurred while saving new task to a user");
+			throw new UserTaskException("Error occurred while saving new task to a user", e);
+		}
+		log.info("Exiting from UserTaskController.addTask()");
+		return null;
+	}
+	
 }
